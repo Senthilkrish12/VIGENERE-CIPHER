@@ -1,8 +1,4 @@
-# VIGENERE-CIPHER
-## EX. NO: 4
- 
-
-## IMPLEMETATION OF VIGENERE CIPHER
+## EX. NO: 4 IMPLEMETATION OF VIGENERE CIPHER
  
 
 ## AIM:
@@ -30,7 +26,49 @@ STEP-8: Repeat the above steps to generate the entire cipher text.
 
 
 ## PROGRAM
+```
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main() {
+    char text[100], key[100], cipher[100], decrypted[100];
+    int i, j, len, keylen;
+
+    printf("Enter plaintext: ");
+    scanf("%s", text);
+
+    printf("Enter keyword: ");
+    scanf("%s", key);
+
+    len = strlen(text);
+    keylen = strlen(key);
+
+    // Encryption
+    for(i=0; i<len; i++) {
+        char t = toupper(text[i]);
+        char k = toupper(key[i % keylen]);
+        cipher[i] = ((t - 'A') + (k - 'A')) % 26 + 'A';
+    }
+    cipher[len] = '\0';
+    printf("Encrypted Text: %s\n", cipher);
+
+    // Decryption
+    for(i=0; i<len; i++) {
+        char c = cipher[i];
+        char k = toupper(key[i % keylen]);
+        decrypted[i] = ((c - k + 26) % 26) + 'A';
+    }
+    decrypted[len] = '\0';
+    printf("Decrypted Text: %s\n", decrypted);
+
+    return 0;
+}
+```
 
 ## OUTPUT
+<img width="1545" height="868" alt="image" src="https://github.com/user-attachments/assets/60670eb1-331b-4c0d-90c1-366fef4ada86" />
+
 
 ## RESULT
+Thus the implementation of the Vigenere Cipher substitution technique using C program is successfully executed.
